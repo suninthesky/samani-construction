@@ -10,6 +10,48 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require uikit
  *= require_tree .
  *= require_self
  */
+
+.nav-overlay {
+  position: absolute;
+}
+
+ #wrapper {
+ 	overflow: auto;
+ 	width: 100%;
+ 	height: 100%;
+ 	position: relative;
+ }
+
+ #logo {
+ 	position: absolute;
+ 	z-index: 0;
+ 	top: 0;
+ 	left: 0;
+ 	bottom: 0;
+ 	right: 0;
+ 	margin: auto;
+ 	width: 420px;
+ 	height: 420px;
+ }
+ #logo img {
+ 	width: inherit;
+ 	max-width: 100%;
+ 	height: auto;
+ }
+
+ .podobrazek {
+ 	position: absolute;
+ 	z-index: 0;
+ 	width: 100%;
+ 	height: 100%;
+ 	-moz-background-size: cover;
+ 	-o-background-size: cover;
+ 	-webkit-background-size: cover;
+ 	background-size: cover;
+ 	background-repeat: no-repeat;
+ 	background-position: center;
+ }

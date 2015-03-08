@@ -1,0 +1,15 @@
+- content_for :home do
+  #wrapper
+    .podobrazek{:style => "background-image:url(http://www.tinquer.com/wp-content/uploads/2015/02/p135567166-6.jpg);"}
+      #logo
+        %img{:alt => "Tinquer", :src => "http://tinquer.com/wp-content/uploads/2014/03/logo-tinquer.png"}/
+
+  #wrap
+    #project-grid.isotope
+      - @projects.each do |project|
+        .isotope-item.project.residential
+          %a.transition{:href => "#", :title => "#{project.name}"}
+            .project-overlay
+              %span
+                %strong= project.name
+            %img{:alt => "", :src => "#{project.image_url}"}
