@@ -17,7 +17,9 @@ ActiveAdmin.register Project do
     column :details
     column :image_url
     column "Architect" do |project|
-      link_to project.architect.name, [:admin, project.architect]
+      if project.architect
+        link_to project.architect.name, [:admin, project.architect]
+      end
     end
     column :complete
     column :featured
