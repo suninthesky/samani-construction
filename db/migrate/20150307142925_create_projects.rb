@@ -2,7 +2,7 @@ class CreateProjects < ActiveRecord::Migration
   def change
     create_table :projects do |t|
       t.references :architect
-      t.string :name, :details, :image_url, required: true
+      t.string :name, :details, required: true
       t.boolean :complete, :featured, required: true
 
       t.timestamps null: false

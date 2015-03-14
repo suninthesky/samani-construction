@@ -2,7 +2,7 @@ ActiveAdmin.register Project do
 
   config.sort_order = 'name_asc'
 
-  permit_params :name, :details, :image_url, :complete, :featured, :architect_id, service_ids: []
+  permit_params :name, :details, :complete, :featured, :architect_id, :photo, service_ids: []
 
   filter :name
   filter :architect
@@ -15,7 +15,9 @@ ActiveAdmin.register Project do
       link_to project.name, [:admin, project]
     end
     column :details
-    column :image_url
+    column :photo do |project|
+      link_to 'Link to photo', "http://res.cloudinary.com/hogs8ujud/image/upload/#{project.photo.path}", target: "_blank"
+    end
     column "Architect" do |project|
       if project.architect
         link_to project.architect.name, [:admin, project.architect]
@@ -34,8 +36,8 @@ ActiveAdmin.register Project do
     f.inputs do
       f.input :name, required: true
       f.input :details, required: true
-      f.input :image_url
       f.input :architect, required: true
+      f.input :photo, as: :formtastic_attachinary
       f.input :services, as: :check_boxes, collection: Service.all, member_label: :name
       f.input :complete
       f.input :featured
@@ -47,7 +49,9 @@ ActiveAdmin.register Project do
     attributes_table do
       row :name
       row :details
-      row :image_url
+      row :photo do |project|
+        link_to 'Link to photo', "http://res.cloudinary.com/hogs8ujud/image/upload/#{project.photo.path}", target: "_blank"
+      end
       row :architect
       row "Services" do |project|
         project.services.each do |s|

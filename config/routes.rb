@@ -7,4 +7,6 @@ Rails.application.routes.draw do
 
   match 'projects', to: 'pages#projects', via: :get, as: 'projects'
 
+  mount Attachinary::Engine => "/attachinary"
+
 end

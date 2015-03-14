@@ -26,6 +26,8 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 gem 'uikit-sass-rails'
 gem 'jquery-turbolinks'
+gem 'cloudinary'
+gem 'attachinary'
 
 gem 'rails_12factor', group: :production
 

@@ -7,9 +7,11 @@
   #wrap
     #project-grid.isotope
       - @projects.each do |project|
-        .isotope-item.project.residential
-          %a.transition{:href => "#", :title => "#{project.name}"}
-            .project-overlay
-              %span
-                %strong= project.name
-            %img{:alt => "", :src => "#{project.image_url}"}
+        -if project.featured?
+          .isotope-item.project.residential
+            %a.transition{:href => "", :title => "#{project.name}"}
+              .project-overlay
+                %span
+                  %strong= project.name
+              - if project.photo?
+                = cl_image_tag(project.photo.path, :width => 500, :height => 321, :crop => :fill)
