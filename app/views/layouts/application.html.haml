@@ -1,12 +1,13 @@
 !!!
 %html
   %head
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
     %title SamaniConstruction
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    %nav.uk-navbar{"data-uk-sticky" => "", class: ('nav-overlay' if content_for?(:home)) }
+    %nav.uk-navbar{"data-uk-sticky" => "", class: ('uk-animation-slide-top' if content_for?(:home)) }
       .uk-container.uk-container-center
         %a.uk-navbar-brand.uk-hidden-small{:href => root_path} Logo
         %ul.uk-navbar-nav.uk-hidden-small
