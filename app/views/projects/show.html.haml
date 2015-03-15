@@ -1,0 +1,29 @@
+.wrapper.uk-animation-fade
+  .hero{background_image(@project)}
+    - unless @project == Project.first
+      .uk-margin-large-top.uk-float-left
+        %a.uk-panel.uk-panel-box{ href: project_path(@project.id - 1) }
+          %i.uk-icon-arrow-left.uk-icon-medium
+    - unless @project == Project.last
+      .uk-margin-large-top.uk-float-right
+        %a.uk-panel.uk-panel-box{ href: project_path(@project.id + 1) }
+          %i.uk-icon-arrow-right.uk-icon-medium
+  .uk-height-1-1.uk-vertical-align
+    .uk-width-1-1.uk-vertical-align-bottom
+      .uk-panel.uk-panel-box.uk-animation-slide-bottom{ style: 'background: rgba(44,44,44,0.8)' }
+        .uk-panel-badge.uk-badge= @project.complete? ? 'Complete' : 'In progress'
+        %h3.uk-panel-title
+          %span.uk-text-bold.uk-text-muted
+            = @project.name
+          - @project.services.each do |s|
+            .uk-button.uk-button-mini
+              = s.name
+        %a.uk-text-muted#toggle{"data-uk-toggle" => "{target:'#details, #toggle'}"} Show details
+        #details.uk-hidden.uk-text-muted
+          %p= @project.details
+          .uk-text-muted
+            Architect -
+            - if @project.architect.website?
+              = link_to @project.architect.name, "#{@project.architect.website}", target: '_blank', class: 'uk-text-muted'
+            - else
+              = @project.architect.name
