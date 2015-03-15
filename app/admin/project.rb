@@ -4,11 +4,17 @@ ActiveAdmin.register Project do
 
   permit_params :name, :details, :complete, :featured, :architect_id, :photo, service_ids: []
 
+  controller do
+    def find_resource
+      Project.where(slug: params[:id]).first!
+    end
+  end
+
   filter :name
   filter :architect
   filter :complete
   filter :featured
-  filter :services, member_label: :name
+  filter :services
 
   index do
     column :name do |project|
@@ -38,7 +44,7 @@ ActiveAdmin.register Project do
       f.input :details, required: true
       f.input :architect, required: true
       f.input :photo, as: :formtastic_attachinary
-      f.input :services, as: :check_boxes, collection: Service.all, member_label: :name
+      f.input :services, as: :check_boxes, collection: Service.all
       f.input :complete
       f.input :featured
     end

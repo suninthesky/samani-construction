@@ -61,11 +61,14 @@ ActiveRecord::Schema.define(version: 20150314142706) do
     t.integer  "architect_id"
     t.string   "name"
     t.string   "details"
+    t.string   "slug"
     t.boolean  "complete"
     t.boolean  "featured"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  add_index "projects", ["slug"], name: "index_projects_on_slug", unique: true, using: :btree
 
   create_table "projects_services", force: :cascade do |t|
     t.integer "project_id"
