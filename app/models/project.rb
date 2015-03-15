@@ -11,6 +11,16 @@ class Project < ActiveRecord::Base
   validates :architect, :name, :slug, :details, :services, :photo, presence: true
   validates :name, :slug, uniqueness: true
 
+  def previous
+    project = Project.find(self.id - 1)
+    project.slug
+  end
+
+  def next
+    project = Project.find(self.id + 1)
+    project.slug
+  end
+
   def to_param
     self.slug
   end

@@ -2,11 +2,11 @@
   .hero{background_image(@project)}
     - unless @project == Project.first
       .uk-margin-large-top.uk-float-left
-        %a.uk-panel.uk-panel-box{ href: project_path(@project.id - 1) }
+        %a.uk-panel.uk-panel-box{ href: project_path(@project.previous) }
           %i.uk-icon-arrow-left.uk-icon-medium
     - unless @project == Project.last
       .uk-margin-large-top.uk-float-right
-        %a.uk-panel.uk-panel-box{ href: project_path(@project.id + 1) }
+        %a.uk-panel.uk-panel-box{ href: project_path(@project.next) }
           %i.uk-icon-arrow-right.uk-icon-medium
   .uk-height-1-1.uk-vertical-align
     .uk-width-1-1.uk-vertical-align-bottom
