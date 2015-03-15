@@ -2,7 +2,7 @@ ActiveAdmin.register Project do
 
   config.sort_order = 'name_asc'
 
-  permit_params :name, :details, :complete, :featured, :architect_id, :photo, service_ids: []
+  permit_params :name, :slug, :details, :complete, :featured, :architect_id, :photo, service_ids: []
 
   controller do
     def find_resource
