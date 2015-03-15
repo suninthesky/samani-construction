@@ -28,6 +28,7 @@ gem 'uikit-sass-rails'
 gem 'jquery-turbolinks'
 gem 'cloudinary'
 gem 'attachinary'
+gem 'newrelic_rpm'
 
 gem 'rails_12factor', group: :production
 
