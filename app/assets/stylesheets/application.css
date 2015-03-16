@@ -21,6 +21,10 @@ body, html {
   background: #000;
 }
 
+.nav-overlay {
+  position: absolute;
+}
+
 #cover {
   background-size: cover;
   background-repeat: no-repeat;

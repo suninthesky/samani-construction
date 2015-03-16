@@ -7,7 +7,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    %nav.uk-navbar{"data-uk-sticky" => "", class: ('uk-animation-slide-top' if content_for?(:home)) }
+    %nav.uk-navbar.nav-overlay{"data-uk-sticky" => "", class: ('uk-animation-slide-top' if content_for?(:home)) }
       .uk-container.uk-container-center
         %a.uk-navbar-brand.uk-hidden-small{:href => root_path} Logo
         %ul.uk-navbar-nav.uk-hidden-small
