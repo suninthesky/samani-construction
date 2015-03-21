@@ -3,9 +3,14 @@
   %head
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
     %title Samani Construction
+
+    %script{:src => "//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry", :type => "text/javascript"}
+    %script{:src => "//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js", :type => "text/javascript"}
+
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+
   %body
     %nav.uk-navbar.nav-overlay{"data-uk-sticky" => "", class: ('uk-animation-slide-top' if content_for?(:home)) }
       .uk-container.uk-container-center
@@ -14,7 +19,7 @@
           %li
             = link_to 'Projects', projects_path
           %li
-            %a{:href => ""} Contact
+            = link_to 'Contact', contact_path
         %a.uk-navbar-toggle.uk-visible-small{"data-uk-offcanvas" => "", :href => "#"}
         %a.uk-navbar-brand.uk-navbar-center.uk-visible-small{:href => root_path} Logo
 

@@ -29,6 +29,8 @@ gem 'jquery-turbolinks'
 gem 'cloudinary'
 gem 'attachinary'
 gem 'newrelic_rpm'
+gem 'gmaps4rails'
+gem 'underscore-rails'
 
 gem 'rails_12factor', group: :production
 

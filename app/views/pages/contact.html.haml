@@ -1,0 +1,51 @@
+.contact-container
+  .uk-vertical-align.contact
+    .uk-vertical-align-middle.uk-margin-large-left.uk-margin-large-right
+
+      %h2 Contact
+      %p
+        %i.uk-icon-send
+          =link_to 'info@samaniconstruction.co.ke', 'mailto:info@samaniconstruction.co.ke'
+      %p
+        %i.uk-icon-phone.uk-icon-small
+          (+254) 2089066 / 77 / 88
+      %p
+        %i.uk-icon-mobile.uk-icon-medium
+          0734 201166 / 0722 201166
+      %p
+        %i.uk-icon-envelope
+          P.O Box 10356 00100, Nairobi, Kenya
+      %p
+        %i.uk-icon-building
+          Kenroid Complex, Tegla Lorupe Road, Off Mombasa Road
+
+.map-container
+  #map
+  :javascript
+    var mapStyle = [{"featureType":"all","elementType":"all","stylers":[{"invert_lightness":true},{"saturation":10},{"lightness":30},{"gamma":0.5},{"hue":"#435158"}]}];
+
+    handler = Gmaps.build('Google');
+    handler.buildMap({
+        internal: {id: 'map'},
+        provider: {
+          zoom:      17,
+          center:    new google.maps.LatLng(-1.326223, 36.880334),
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          styles:    mapStyle,
+          disableDefaultUI: true
+        }
+      },
+      function(){
+        markers = handler.addMarkers([
+          {
+            "lat": -1.326223,
+            "lng": 36.880334,
+            "picture": {
+              "url": "http://searchengineland.com/images/icons/tumblr-36x36.png",
+              "width":  36,
+              "height": 36
+            },
+          }
+        ]);
+      }
+    );
