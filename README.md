@@ -2,11 +2,13 @@
 
 ## Setup
 
-1. `clone repo`
+### Common
+
+1. Clone repo
 2. `bundle install`
 3. `rake db:create`
 4. `rake db:migrate`
 
-## Running locally
+### Running locally
 
 1. `foreman start`
