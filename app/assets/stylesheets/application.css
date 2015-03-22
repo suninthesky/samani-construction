@@ -21,6 +21,11 @@ body, html {
   background: #000;
 }
 
+#bg {
+  background-color: rgba(0, 131, 209, 0.9);
+  z-index: 990;
+}
+
 .nav-overlay {
   position: absolute;
 }
@@ -30,10 +35,6 @@ body, html {
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
-}
-
-#remove-left-padding {
-  padding-left: 0;
 }
 
 a[href^="http://maps.google.com/maps"]{display:none !important}

@@ -12,18 +12,18 @@
     = csrf_meta_tags
 
   %body
-    %nav.uk-navbar.nav-overlay{"data-uk-sticky" => "", class: ('uk-animation-slide-top' if content_for?(:home)) }
+    %nav.uk-navbar#bg.uk-animation-slide-top{"data-uk-sticky" => "", class: ('nav-overlay' unless content_for?(:projects)) }
       .uk-container.uk-container-center
-        %a.uk-navbar-brand.uk-hidden-small{:href => root_path} Logo
+        %a.uk-navbar-brand.uk-hidden-small.logo{:href => root_path}
         %ul.uk-navbar-nav.uk-hidden-small
-          %li
+          %li#nav-link
             = link_to 'Projects', projects_path
-          %li
+          %li#nav-link
             = link_to 'Contact', contact_path
         %a.uk-navbar-toggle.uk-visible-small{"data-uk-offcanvas" => "", :href => "#"}
-        %a.uk-navbar-brand.uk-navbar-center.uk-visible-small{:href => root_path} Logo
+        %a.uk-navbar-brand.uk-navbar-center.uk-visible-small.logo{:href => root_path}
 
-    - if content_for?(:home)
-      = yield(:home)
+    - if content_for?(:projects)
+      = yield(:projects)
     - else
       = yield

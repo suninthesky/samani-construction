@@ -1,24 +1,25 @@
-- content_for :home do
-  .wrapper.uk-animation-fade
-    .hero
-      #logo
-        %img{:alt => "Tinquer", :src => "http://tinquer.com/wp-content/uploads/2014/03/logo-tinquer.png"}
-        %a.uk-button.uk-button-large.uk-width-1-1.uk-margin-top{"data-uk-smooth-scroll" => "", :href => "#featured"} See more of our work
-    -# .uk-height-1-1.uk-vertical-align
-    -#   .uk-width-1-1.uk-vertical-align-bottom.uk-text-center
-    -#     .uk-panel.uk-panel-box.uk-animation-slide-bottom{ style: 'background: rgba(44,44,44,0.7)' }
-    -#       .uk-text-muted Capital club
+.wrapper.uk-animation-fade
+  .hero
+    #logo
+      = image_tag('logo.svg')
+      %a.uk-button.uk-button-large.uk-width-1-1.uk-margin-top.uk-button-primary{"data-uk-smooth-scroll" => "", :href => "#featured"} See more of our work
+  -# .uk-height-1-1.uk-vertical-align
+  -#   .uk-width-1-1.uk-vertical-align-bottom.uk-text-center
+  -#     .uk-panel.uk-panel-box.uk-animation-slide-bottom{ style: 'background: rgba(44,44,44,0.7)' }
+  -#       .uk-text-muted Capital club
 
-  .uk-width-1-1#featured
-    .uk-grid
-      - @projects.order("id asc").each do |project|
-        -if project.featured?
-          .uk-width-medium-1-3#remove-left-padding
-            - if project.photo?
-              %a.uk-overlay#cover{ href: project_path(project) }
-                = cl_image_tag(project.photo.path, :width => 500, :height => 321, :crop => :fill, :id => 'cover')
-                .uk-overlay-area
-                  .uk-overlay-area-content
-                    .uk-text-large.uk-text-contrast= project.name
+.uk-width-1-1#featured
+  .uk-grid.uk-grid-collapse
+    - @projects.order("id asc").each do |project|
+      -if project.featured?
+        %div{ class: assign_project_class }
+          - if project.photo?
+            %a.uk-overlay#cover{ href: project_path(project) }
+              = cl_image_tag(project.photo.path, :width => 500, :height => 321, :crop => :fill, :id => 'cover')
+              .uk-overlay-area
+                .uk-overlay-area-content
+                  .uk-text-large.uk-text-contrast= project.name
+
+
 
   = link_to 'Contact us', contact_path, class: 'uk-width-1-1 uk-button uk-button-large'

@@ -1,4 +1,4 @@
-.contact-container
+.contact-container.uk-animation-fade
   .uk-vertical-align.contact
     .uk-vertical-align-middle.uk-margin-large-left.uk-margin-large-right
 
@@ -19,7 +19,7 @@
         %i.uk-icon-building
           Kenroid Complex, Tegla Lorupe Road, Off Mombasa Road
 
-.map-container
+.map-container.uk-animation-fade
   #map
   :javascript
     var mapStyle = [{"featureType":"all","elementType":"all","stylers":[{"invert_lightness":true},{"saturation":10},{"lightness":30},{"gamma":0.5},{"hue":"#435158"}]}];
@@ -28,7 +28,7 @@
     handler.buildMap({
         internal: {id: 'map'},
         provider: {
-          zoom:      17,
+          zoom:      12,
           center:    new google.maps.LatLng(-1.326223, 36.880334),
           mapTypeId: google.maps.MapTypeId.ROADMAP,
           styles:    mapStyle,
@@ -41,10 +41,11 @@
             "lat": -1.326223,
             "lng": 36.880334,
             "picture": {
-              "url": "http://searchengineland.com/images/icons/tumblr-36x36.png",
+              "url": "#{image_url('map-logo.png')}",
               "width":  36,
               "height": 36
             },
+            "infowindow": "Samani Construction"
           }
         ]);
       }

@@ -1,44 +1,11 @@
-#wrappera
-  #wrap
-    #project-grid.isotope
-      .isotope-item.project.residential
-        %a.transition{:href => "", :title => "Mt Martha Beach House"}
-          .project-overlay
-            %span
-              %strong Mt Martha Beach House
-          %img{:alt => "", :src => "http://wolveridge.com.au/assets/Uploads/_resampled/CroppedImage500321-Mt-Martha-Beach-House-Wolveridge-Architects-Mornington-Peninsula-Award-Winning-Grid3.jpg"}/
-
-      .isotope-item.project.residential
-        %a.transition{:href => "", :title => "Eltham South, Blairgowrie"}
-          .project-overlay
-            %span
-              %strong Eltham South, Blairgowrie
-          %img{:alt => "", :src => "http://wolveridge.com.au/assets/Uploads/_resampled/CroppedImage500321-Project-Eltham-South-Grid-Image3.jpg"}/
-
-      .isotope-item.project.multi-residential.commercial.in-progress
-        %a.transition{:href => "", :title => "Port Douglas Multi Residential Development - In Progress"}
-          .project-overlay
-            %span
-              %strong Port Douglas Multi Residential Development - In Progress
-          %img{:alt => "", :src => "http://wolveridge.com.au/assets/Uploads/_resampled/CroppedImage500321-Grid-Image.jpg"}/
-
-      .isotope-item.project.residential.alterations-additions
-        %a.transition{:href => "", :title => "Northcote Residence "}
-          .project-overlay
-            %span
-              %strong Northcote Residence
-          %img{:alt => "", :src => "http://wolveridge.com.au/assets/Uploads/_resampled/CroppedImage500321-Project-Northcote-Residence-Grid-Image3.jpg"}/
-
-      .isotope-item.project.residential.in-progress
-        %a.transition{:href => "", :title => "Ascot Vale Bungalow"}
-          .project-overlay
-            %span
-              %strong Ascot Vale Bungalow
-          %img{:alt => "", :src => "http://wolveridge.com.au/assets/Uploads/_resampled/CroppedImage500321-Ascot-Vale-Bungalow-Grid-Image.jpg"}/
-
-      .isotope-item.project.residential
-        %a.transition{:href => "", :title => "Torquay House, Torquay"}
-          .project-overlay
-            %span
-              %strong Torquay House, Torquay
-          %img{:alt => "", :src => "http://wolveridge.com.au/assets/Uploads/_resampled/CroppedImage500321-Project-Torquay-Grid-Image03.jpg"}/
+- content_for :projects do
+  .uk-width-1-1.uk-animation-fade
+    .uk-grid.uk-grid-collapse
+      - @projects.order("id asc").each do |project|
+        %div{ class: assign_projects_class }
+          - if project.photo?
+            %a.uk-overlay#cover{ href: project_path(project) }
+              = cl_image_tag(project.photo.path, :width => 500, :height => 321, :crop => :fill, :id => 'cover')
+              .uk-overlay-area
+                .uk-overlay-area-content
+                  .uk-text-large.uk-text-contrast= project.name

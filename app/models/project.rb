@@ -1,7 +1,6 @@
 class Project < ActiveRecord::Base
 
-  before_validation :set_slug, unless: :slug
-  before_save :set_slug, if: :slug
+  before_validation :set_slug
 
   belongs_to :architect
   has_and_belongs_to_many :services
@@ -11,14 +10,15 @@ class Project < ActiveRecord::Base
   validates :architect, :name, :slug, :details, :services, :photo, presence: true
   validates :name, :slug, uniqueness: true
 
-  def previous
-    project = Project.find(self.id - 1)
-    project.slug
-  end
+  scope :next, lambda {|id| where("id > ?",id).order("id ASC") } # this is the default ordering for AR
+  scope :previous, lambda {|id| where("id < ?",id).order("id DESC") }
 
   def next
-    project = Project.find(self.id + 1)
-    project.slug
+    project = Project.next(self.id).first
+  end
+
+  def previous
+    project = Project.previous(self.id).first
   end
 
   def to_param
@@ -29,12 +29,9 @@ class Project < ActiveRecord::Base
     self.slug = generate_slug
   end
 
-  def generate_slug(n=1)
+  def generate_slug
     return nil unless self.name
-    candidate = self.name.downcase.gsub(/[^a-z0-9]+/, '-')
-    candidate += "-#{n}" if n > 1
-    return candidate unless Project.find_by_slug(candidate)
-    generate_slug(n+1)
+    return candidate = self.name.downcase.gsub(/[^a-z0-9]+/, '-')
   end
 
 end

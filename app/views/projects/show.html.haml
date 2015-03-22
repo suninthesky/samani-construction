@@ -1,12 +1,12 @@
 .wrapper.uk-animation-fade
   .hero{background_image(@project)}
-    - unless @project == Project.first
+    - if @project.previous.presence
       .uk-margin-large-top.uk-float-left
-        %a.uk-panel.uk-panel-box{ href: project_path(@project.previous) }
+        %a.uk-panel.uk-panel-box.arrows{ href: project_path(@project.previous) }
           %i.uk-icon-arrow-left.uk-icon-medium
-    - unless @project == Project.last
+    - if @project.next.presence
       .uk-margin-large-top.uk-float-right
-        %a.uk-panel.uk-panel-box{ href: project_path(@project.next) }
+        %a.uk-panel.uk-panel-box.arrows{ href: project_path(@project.next) }
           %i.uk-icon-arrow-right.uk-icon-medium
   .uk-height-1-1.uk-vertical-align
     .uk-width-1-1.uk-vertical-align-bottom
