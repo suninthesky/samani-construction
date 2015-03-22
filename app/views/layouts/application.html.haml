@@ -14,14 +14,12 @@
   %body
     %nav.uk-navbar#bg.uk-animation-slide-top{"data-uk-sticky" => "", class: ('nav-overlay' unless content_for?(:projects)) }
       .uk-container.uk-container-center
-        %a.uk-navbar-brand.uk-hidden-small.logo{:href => root_path}
-        %ul.uk-navbar-nav.uk-hidden-small
+        %a.uk-navbar-brand.logo{:href => root_path}
+        %ul.uk-navbar-nav
           %li#nav-link
             = link_to 'Projects', projects_path
           %li#nav-link
             = link_to 'Contact', contact_path
-        %a.uk-navbar-toggle.uk-visible-small{"data-uk-offcanvas" => "", :href => "#"}
-        %a.uk-navbar-brand.uk-navbar-center.uk-visible-small.logo{:href => root_path}
 
     - if content_for?(:projects)
       = yield(:projects)
